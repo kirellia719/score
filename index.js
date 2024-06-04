@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const cors = require("cors");
 
-const candidateRoute = require("./routes/candidate");
+const router = require("./routes");
 const { default: mongoose } = require("mongoose");
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Router
-app.use("/candidates", candidateRoute);
+app.use("/", router);
 
 // Launch
 

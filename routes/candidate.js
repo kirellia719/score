@@ -40,6 +40,18 @@ router.get("/duplicated", async (req, res) => {
   }
 });
 
+router.use((req, res, next) => {
+  try {
+    const { password } = req.body;
+    if (password === process.env.PASSWORD) {
+      next();
+    } else {
+      return res.status(403).json("Không có quyền truy cập");
+    }
+  } catch (error) {
+    return res.status(500).json("Lỗi hệ thống");
+  }
+});
 router.get("/", async (req, res) => {
   try {
     const candidates = await Candidate.find({});
