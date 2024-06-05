@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const path = require("path");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const router = require("./routes");
 const { default: mongoose } = require("mongoose");

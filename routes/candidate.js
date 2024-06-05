@@ -40,10 +40,10 @@ router.get("/duplicated", async (req, res) => {
   }
 });
 
-router.use((req, res, next) => {
+const protect = async (req, res, next) => {
   try {
     const { password } = req.body;
-    if (password === process.env.PASSWORD) {
+    if (password == process.env.PASSWORD) {
       next();
     } else {
       return res.status(403).json("Không có quyền truy cập");
@@ -51,8 +51,9 @@ router.use((req, res, next) => {
   } catch (error) {
     return res.status(500).json("Lỗi hệ thống");
   }
-});
-router.get("/", async (req, res) => {
+};
+
+router.get("/", protect, async (req, res) => {
   try {
     const candidates = await Candidate.find({});
     res.json(candidates);
@@ -61,7 +62,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/upload", upload.single("file"), async (req, res) => {
+router.post("/upload", upload.single("file"), protect, async (req, res) => {
   const file = req.file;
   if (!file) {
     return res.status(400).send("No file uploaded.");
