@@ -73,6 +73,7 @@ router.post("/upload", upload.single("file"), protect, async (req, res) => {
   const sheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];
   const jsonData = xlsx.utils.sheet_to_json(worksheet);
+  console.log(jsonData);
 
   // In dữ liệu đọc được từ file Excel ra console
   const newData = jsonData.map((c) => {
@@ -85,6 +86,7 @@ router.post("/upload", upload.single("file"), protect, async (req, res) => {
 
   // Lưu vào database
   const response = await Promise.all(newData.map((c) => Candidate.create(c)));
+  console.log(newData);
 
   res.status(201).json(response);
 });

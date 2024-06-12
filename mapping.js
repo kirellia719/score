@@ -5,7 +5,7 @@ const mappingConst = {
   },
   "Họ và tên": {
     type: String,
-    title: "firstname",
+    title: "fullname",
   },
   Toán: {
     type: Number,
@@ -18,6 +18,10 @@ const mappingConst = {
   Anh: {
     type: Number,
     title: "english",
+  },
+  "Điểm cộng": {
+    type: Number,
+    title: "extra",
   },
   "Ngày sinh": {
     type: String,
