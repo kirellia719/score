@@ -3,13 +3,9 @@ const mappingConst = {
     type: String,
     title: "SBD",
   },
-  "Họ và tên đệm": {
+  "Họ và tên": {
     type: String,
-    title: "firstname",
-  },
-  Tên: {
-    type: String,
-    title: "lastname",
+    title: "fullname",
   },
   Toán: {
     type: Number,
